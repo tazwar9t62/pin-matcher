@@ -4,6 +4,7 @@ const randomNumberOutput = document.querySelector(".random_number_output");
 generateBtn.addEventListener("click", () => {
   randomNumberOutput.value = generateRandomNumber().toString();
   document.querySelector(".user_input_show").value = "";
+  document.getElementById("pinGenerateSound").play();
 });
 
 //Declaring global variables
@@ -68,9 +69,12 @@ function notify(isitmatch) {
   if (isitmatch === true) {
     match.style.display = "block";
     notMatch.style.display = "none";
+    document.getElementById("wowSound").play();
   } else {
     notMatch.style.display = "block";
     match.style.display = "none";
+    document.getElementById("errorSound").play();
+
   }
 }
 //function to handle wrong pin 
@@ -87,6 +91,7 @@ function wrongMessage(message) {
 function appendNumber(number) {
   let userInputShow = document.querySelector(".user_input_show");
   userInputShow.value = userInputShow.value + number.innerText;
+  document.getElementById("digitClickSound").play();
 }
 //Function to handle the pin
 function checkingTheNumber() {
